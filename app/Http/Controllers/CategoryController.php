@@ -5,56 +5,55 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 
+
 class CategoryController extends Controller
 {
     public function index()
     {
-        $categories = Category::all(); // Retrieve all categories from the database
-        return view('layouts.categories', compact('categories'));
+        $categories = Category::all();
+        return view('categories.index', compact('categories'));
     }
-    
+
+    public function create()
+    {
+        return view('categories.create');
+    }
+
     public function store(Request $request)
     {
-        // Validate the request data
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:categories',
         ]);
 
-        // Create a new category
-        Category::addCat($request->input('name'));
+        Category::create([
+            'name' => $request->input('name'),
+        ]);
 
-        return redirect()->route('categories.index')
-            ->with('success', 'Category created successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category created successfully.');
     }
 
     public function edit(Category $category)
     {
-        // Retrieve the category for editing and return the edit view
         return view('categories.edit', compact('category'));
     }
 
     public function update(Request $request, Category $category)
     {
-        // Validate the request data
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|unique:categories,name,' . $category->id,
         ]);
 
-        // Update the category with the new data
-        $category->modCat($request->input('name'));
+        $category->update([
+            'name' => $request->input('name'),
+        ]);
 
-        return redirect()->route('categories.index')
-            ->with('success', 'Category updated successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category updated successfully.');
     }
 
     public function destroy(Category $category)
     {
-        // Delete the category
-        $category->delCat();
+        $category->delete();
 
-        return redirect()->route('categories.index')
-            ->with('success', 'Category deleted successfully.');
+        return redirect()->route('categories.index')->with('success', 'Category deleted successfully.');
     }
-
-    // ...
 }

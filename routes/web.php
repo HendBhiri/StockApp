@@ -45,7 +45,9 @@ Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name
 Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 Route::delete('/products/delete/{product}', 'ProductController@destroy')->name('products.delete');
 
-Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-Route::get('/categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
-Route::put('/categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
-Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+
+Route::resource('categories', CategoryController::class);
+Route::get('/category', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/category/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+Route::put('/category/{category}', [CategoryController::class, 'update'])->name('categories.update');
+Route::delete('/category/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
