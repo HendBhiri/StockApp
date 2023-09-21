@@ -8,14 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    public static function Create($name)
+
+    // Create a new category
+    public static function createCategory($name)
     {
         return self::create([
             'name' => $name,
         ]);
     }
 
-    public function Update($name)
+    // Update the category's name
+    public function updateCategoryName($name)
     {
         $this->update([
             'name' => $name,
@@ -23,7 +26,8 @@ class Category extends Model
         return $this;
     }
 
-    public function delCat()
+    // Delete the category
+    public function removeCategory()
     {
         $this->delete();
     }
