@@ -3,6 +3,7 @@
 
 @section('content')
 <body>
+<div class="section-body mt-3">
 <div class="row clearfix mt-4">
     <div class="col-12 col-sm-12">
         <div class="card">
@@ -70,15 +71,13 @@
         </div>
     </div>
 </div>
-
-
-    <hr>
+<hr>
+</div>
 <!-- Include jQuery if you haven't already -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <!-- Include your custom JavaScript file -->
 <script src="{{ asset('js/product-delete.js') }}"></script>
 
-</div>
 </body>
 @endsection

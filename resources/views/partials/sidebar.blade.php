@@ -26,8 +26,8 @@
                     <ul class="metismenu ci-effect-1">
                         <li class="g_heading"><b>DASHBOARD</b></li>
                         <li class="active"><a href="{{ url('/') }}"><i class="fe fe-home"></i><span data-hover="Home">Home</span></a></li>
-                        <li><a href="app-calendar.html"><i class="fe fe-package"></i><span data-hover="Calendar">Products</span></a></li>
-                        <li><a href="app-chat.html"><i class="fe fe-grid"></i><span data-hover="Chat">Category</span></a></li>
+                        <li><a href="{{ url('/products') }}"><i class="fe fe-package"></i><span data-hover="Products">Products</span></a></li>
+                        <li><a href="{{ url('/categories') }}"><i class="fe fe-grid"></i><span data-hover="Category">Category</span></a></li>
 
                         <li class="font-14 font-weight-bold mt-4 text-muted">PREFERENCES</li>
                         <ul class="setting-list list-unstyled mt-1 setting_switch">
