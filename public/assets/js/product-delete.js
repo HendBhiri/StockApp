@@ -17,7 +17,21 @@ $(document).ready(function () {
                         // Handle error
                         alert("Failed to delete the product.");
                     },
+                    success: function (data) {
+                        // Handle success (e.g., remove the product row from the table)
+                        console.log('Success:', data);
+                        $(this).closest("tr").remove();
+                    },
+                    error: function (data) {
+                        // Handle error
+                        console.error('Error:', data);
+                        alert("Failed to delete the product.");
+                    },
+                    
                 });
             }
         });
-    });
+
+        var deleteUrl = "{{ route('products.delete', ['product' => '__productId__']) }}".replace('__productId__', productId);
+        console.log(deleteUrl);
+});

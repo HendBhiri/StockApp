@@ -27,8 +27,8 @@ Route::middleware(['admin'])->group(function () {
         return 123;
     });
 });
-Route::post('/gzfhdhzdg', [ProductController::class, 'store'])->name('products.store');
-// Temporarily disable middleware
+Route::post('/auth', [AdminAuthController::class, 'login'])->name('products.store');
+
 Route::get('/', function () {
     return view('layouts.index');
 });
